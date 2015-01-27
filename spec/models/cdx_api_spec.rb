@@ -717,9 +717,9 @@ describe Cdx::Api do
 
   context "Location" do
     it "filters by location" do
-      index results: [result: "negative"], parent_locations: [1, 2, 3]
-      index results: [result: "positive"], parent_locations: [1, 2, 4]
-      index results: [result: "positive with riff"], parent_locations: [1, 5]
+      index results: [result: "negative"], location: { admin_level_0: 1, admin_level_1: 2, admin_level_2: 3 }
+      index results: [result: "positive"], location: { admin_level_0: 1, admin_level_1: 2, admin_level_2: 4 }
+      index results: [result: "positive with riff"], location: { admin_level_0: 1, admin_level_1: 5 }
 
       expect_one_result "negative", location: 3
       expect_one_result "positive", location: 4
@@ -779,9 +779,9 @@ describe Cdx::Api do
       end
 
       it "should allow searching by the new field" do
-        index patient_loc_id: 1, parent_patient_locs: [1]
-        index patient_loc_id: 2, parent_patient_locs: [1,2]
-        index patient_loc_id: 3, parent_patient_locs: [3]
+        index patient_loc_id: 1, patient_loc: { admin_level_0: 1 }
+        index patient_loc_id: 2, patient_loc: { admin_level_0: 1, admin_level_1: 2}
+        index patient_loc_id: 3, patient_loc: { admin_level_0: 3 }
 
         response = query_events patient_loc: 1
         expect(response.count).to eq(2)

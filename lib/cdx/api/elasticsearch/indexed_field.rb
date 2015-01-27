@@ -61,6 +61,10 @@ class Cdx::Api::Elasticsearch::IndexedField
     @definition[:sub_fields]
   end
 
+  def levels
+    6
+  end
+
 private
   def default_date_filter_definition_boundary(suffix, boundary)
     {name: "#{default_name}_#{suffix}", type: 'range', boundary: boundary, options: { include_lower: true }}
@@ -106,7 +110,7 @@ private
 
   def default_filter_type
     if @definition[:type] == 'location'
-      'location'  
+      'location'
     elsif @definition[:type] == 'integer'
       'match'
     else
@@ -116,7 +120,7 @@ private
 
   def default_grouping_type
     if @definition[:type] == 'location'
-      'location'  
+      'location'
     else
       'flat'
     end

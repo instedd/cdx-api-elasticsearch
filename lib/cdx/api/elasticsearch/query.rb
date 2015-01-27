@@ -188,7 +188,12 @@ class Cdx::Api::Elasticsearch::Query
   end
 
   def process_location_field(field_definition, field_value)
-    process_match_field("parent_#{field_definition[:name].pluralize}", field_definition[:type], field_value)
+    {
+      nested: {
+        path: field_definition.name,
+        query: or_conditions(field_definition.levels.times.map {|i| process_match_field("#{field_definition.name}.admin_level_#{i}", field_definition[:type], field_value)})
+      }
+    }
   end
 
   def process_order params
