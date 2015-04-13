@@ -41,6 +41,8 @@ searchable_fields:
     type: date
   - name: event_id
     group_parameter_definition: none
+    filter_parameter_definition:
+      - name: event_id
   - name: sample_uuid
     scope: sample
   - name: sample_id
