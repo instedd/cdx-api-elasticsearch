@@ -1,6 +1,8 @@
-# Cdx::Api::Elasticsearch
+## Warning: this repo has been deprecated. You can find `cdx-api-elasticsearch` gem at [it's new home](https://github.com/instedd/cdp/tree/master/deps/cdx-api-elasticsearch)
 
-[![Build Status](https://travis-ci.org/instedd/cdx-api-elasticsearch.svg)](https://travis-ci.org/instedd/cdx-api-elasticsearch)
+-------
+
+# Cdx::Api::Elasticsearch
 
 Provides an implementation of the [CDX query API](http://dxapi.org/#/query-events) based on an ElasticSearch backend.
 
